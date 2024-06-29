@@ -6,9 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { v4 as uuidv4 } from 'uuid';
 
-
-
-const CDNURL= "https://otfuqrdrpywxqbcudvtm.supabase.co/storage/v1/object/sign/images/233e7b97-d529-463f-af85-43fa83e87348/2f08b1c2-dcd2-475d-b58e-d38b7c49b873?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvMjMzZTdiOTctZDUyOS00NjNmLWFmODUtNDNmYTgzZTg3MzQ4LzJmMDhiMWMyLWRjZDItNDc1ZC1iNThlLWQzOGI3YzQ5Yjg3MyIsImlhdCI6MTcxOTUyOTM1MCwiZXhwIjoyMDM0ODg5MzUwfQ.pGaB0gg4q8mo56mPfSXVtcAtz9wCVCzAaAPIOTeoVIg";
+const CDNURL= "https://otfuqrdrpywxqbcudvtm.supabase.co/storage/v1/object/public/images/";
 
 function App() {
   const [ email, setEmail ] = useState("");
@@ -51,7 +49,7 @@ async function magicLinkLogin() {
     alert("Error communicating with supabase, make sure to use a real email address!");
     console.log(error);
   } else {
-    alert("Check your email for a Supabase magic link to log in!");
+    alert("Check your email for a Supabase magic Link to log in!");
   }
 }
 
@@ -64,7 +62,7 @@ async function uploadImage(e) {
 
   const { data, error } = await supabase
     .storage
-    .from("images")
+    .from('images')
     .upload(user.id + "/" + uuidv4(), file)
     
   if(data) {
@@ -92,11 +90,11 @@ async function deleteImage(imageName) {
   return (
     <Container align="center" className="container-sm mt-4">
       {/* 
-        if : show them the login page
+        if they dont exist: show them the login page
         if the user exists: show them the images / upload images page
       */}
 
-      {user === null ?
+      { user === null ?
         <>
           <h1>Welcome To ImageWall</h1>
           <Form>
@@ -116,9 +114,9 @@ async function deleteImage(imageName) {
     :
       <>
         <h1>Your ImageWall</h1>
-        <Button onClick={() => signOut()}>Sign out</Button>
+        <Button onClick={() => signOut()}>Sign Out</Button>
         <p>Current user: {user.email}</p>
-        <p>Use the Choose File button below to update an image to your gallery</p>
+        <p>Use the Choose File button below to upload an image to your gallery</p>
         <Form.Group className="mb-3" style={{maxWidth: "500px"}}>
 
           <Form.Control type="file" accept="image/png, image/jpeg, video/mp4, audio/mpeg, video/webm, image/webp, video/avi, video/quicktime, video/x-flv " onChange={(e) => uploadImage(e)}/>
