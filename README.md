@@ -1,6 +1,6 @@
 # This is a Photo Vault Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the back-end I'm using SupaBase as my cloud storage for users.
 
 ## Available Scripts
 
