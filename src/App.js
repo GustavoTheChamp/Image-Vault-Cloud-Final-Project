@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { v4 as uuidv4 } from 'uuid';
 
-const CDNURL= "https://otfuqrdrpywxqbcudvtm.supabase.co/storage/v1/object/public/images/";
+const CDNURL= "";
 
 function App() {
   const [ email, setEmail ] = useState("");
@@ -70,7 +70,7 @@ async function uploadImage(e) {
   } else {
     console.log(error);
 
-  } //uuid
+  } 
 }
 
 async function deleteImage(imageName) {
@@ -96,7 +96,7 @@ async function deleteImage(imageName) {
 
       { user === null ?
         <>
-          <h1>Welcome To ImageWall</h1>
+          <h1>Welcome To ImageVault</h1>
           <Form>
             <Form.Group className="mb-3" style={{maxWidth: "500px"}}>
               <Form.Label>Enter an email to sign in with a Supabase Magic Link</Form.Label>
@@ -113,7 +113,7 @@ async function deleteImage(imageName) {
         </>
     :
       <>
-        <h1>Your ImageWall</h1>
+        <h1>Your ImageVault</h1>
         <Button onClick={() => signOut()}>Sign Out</Button>
         <p>Current user: {user.email}</p>
         <p>Use the Choose File button below to upload an image to your gallery</p>
